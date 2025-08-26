@@ -83,7 +83,7 @@ const Cart = () => {
                       className="flex items-center gap-2"
                     >
                       <img
-                        src={`${uri}${item.product.imageUrl}`}
+                        src={`${uri}/${item.product.imageUrl}`}
                         alt={item.product.name}
                         className="w-12 h-12"
                       />

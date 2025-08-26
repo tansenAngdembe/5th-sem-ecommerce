@@ -65,7 +65,7 @@ const Card = ({ products }) => {
           >
             <div className="flex items-center justify-center h-[140px] sm:h-[160px]">
               <img
-                src={`${uri}/static/${data.imageUrl}`}
+                src={`${uri}/${data.imageUrl}`}
                 alt={data.name}
                 className="w-[100px] h-[100px] sm:w-[120px] sm:h-[120px] object-cover rounded bg-gray-50"
               />

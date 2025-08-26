@@ -17,6 +17,15 @@ export default function Productpage() {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [image, setImage] = useState("");
 
+  const buildImageUrl = (path) => {
+    if (!path) return "";
+    const strPath = String(path);
+    if (/^https?:\/\//i.test(strPath)) return strPath;
+    const base = String(uri || "").replace(/\/+$/, "");
+    const cleanPath = strPath.replace(/^\/+/, "");
+    return `${base}/${cleanPath}`;
+  };
+
   // Calculate total quantity in cart for this product
   const totalQuantity = state.cart
     .filter((item) => item.product_id._id === id)
@@ -88,7 +97,7 @@ export default function Productpage() {
                 onMouseEnter={() => setImage(img)}
               >
                 <img
-                  src={`${uri}${img}`}
+                  src={buildImageUrl(img)}
                   alt={selectedProduct?.name}
                   className="w-full mix-blend-multiply"
                 />
@@ -97,7 +106,7 @@ export default function Productpage() {
           </div>
           <div className="bg-gray-100 p-2 w-[70%]">
             <img
-              src={`${uri}${image}`}
+              src={buildImageUrl(image)}
               alt={selectedProduct?.name}
               className="w-full mix-blend-multiply"
             />
